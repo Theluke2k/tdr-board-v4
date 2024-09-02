@@ -1,4 +1,4 @@
--I"C:/Users/lselm/Downloads/PipeSense_AU_SW-main/PipeSense_AU_SW-main/tdr-board-v4_1/system"
+-I"C:/Users/lselm/git/tdr-board-v4/tdr-board-v4/system"
 -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/ARM/CMSIS/5.0.1/CMSIS/Include"
 -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include"
 -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/adc"
@@ -14,5 +14,5 @@
 -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/uart"
 -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/wdt"
 -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/xint"
--I"C:/Users/lselm/Downloads/PipeSense_AU_SW-main/PipeSense_AU_SW-main/tdr-board-v4_1/RTE"
--I"C:/Users/lselm/Downloads/PipeSense_AU_SW-main/PipeSense_AU_SW-main/tdr-board-v4_1/RTE/Device/ADuCM4050"
+-I"C:/Users/lselm/git/tdr-board-v4/tdr-board-v4/RTE"
+-I"C:/Users/lselm/git/tdr-board-v4/tdr-board-v4/RTE/Device/ADuCM4050"

@@ -82,18 +82,18 @@ void init_system()
 
     uart_init();
 
-    xint_init();
+    //xint_init();
 
 	gpio_init();
 
-	adc_init(false); // TODO: calibration stuck. Check later.
+	//adc_init(false); // TODO: calibration stuck. Check later.
 
-    i2c_init();
+    //i2c_init();
 
-    rtc_Init();
+    //rtc_Init();
 
-    spi_init();
-	lora_initialize();
+    //spi_init();
+	//lora_initialize();
 
 }
 

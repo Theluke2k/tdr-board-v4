@@ -19,6 +19,9 @@
 volatile uint32_t iHibernateExitFlag = 0;
 volatile uint8_t print_flag = 0;
 
+const char* message = "test";
+uint16_t length = 4;
+
 /*
  * The system performs measurements every SLEEP_TIME (rtc.h) seconds and prints the measurement via UART - this is used to work with the external logging solution,
  * for the reasons stated by me during the technical meeting. Basically, anything with uart and an SD card will do just fine, or something on computer (terminal or something\
@@ -27,22 +30,28 @@ volatile uint8_t print_flag = 0;
 int main(int argc, char *argv[])
 {
     init_system();
+
+    // DEBUG CODE
+    while(1) {
+    	// Toggle pin
+    	adi_gpio_Toggle(ADI_GPIO_PORT0, ADI_GPIO_PIN_14);
+
+    	// Send UART data
+    	uart_write(message, length);
+
+    	uint32_t clockFreq;
+    	adi_pwr_GetClockFrequency(ADI_CLOCK_HCLK, &clockFreq);
+    	uint32_t delay_val = clockFreq / 15000;
+    	delay_val *= 1;
+    	while(--delay_val) {}
+    }
+
+
+	/*
+	 *
 	struct tdr_data tdr_data[TDR_MEMORY_SIZE];
 	uint16_t index = 0;
 	uint16_t package_counter = 5;
-
-
-
-	// DEBUG START
-	adi_gpio_SetHigh(ADI_GPIO_PORT2, ADI_GPIO_PIN_0); // DEBUG orange
-
-	uint32_t delay_vale = 1600*50*2; // 20ms
-	while(--delay_vale){};
-
-	adi_gpio_SetLow(ADI_GPIO_PORT2, ADI_GPIO_PIN_0); // DEBUG orange
-	// DEBUG END
-
-
 
 	packageNumber = 0;
 
@@ -81,5 +90,6 @@ int main(int argc, char *argv[])
 			enter_hibernation();
 		}
 	}
+	*/
 	return 0;
 }
