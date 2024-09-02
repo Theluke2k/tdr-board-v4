@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
     	uart_write(message, length);
     	uart_deinit();
 
-    	// Create Delay
+    	// Create 1ms Delay
     	uint32_t clockFreq;
     	adi_pwr_GetClockFrequency(ADI_CLOCK_HCLK, &clockFreq);
     	uint32_t delay_val = clockFreq / 15000;
