@@ -131,6 +131,9 @@ void digital_pin_init()
 	if (ADI_GPIO_SUCCESS != (error_status = adi_gpio_OutputEnable(ADI_GPIO_PORT0, ADI_GPIO_PIN_14, true))) {
 		DEBUG_MESSAGE("adi_gpio_OutputEnable failed\n");
 	}
+	if (ADI_GPIO_SUCCESS != (error_status = adi_gpio_OutputEnable(ADI_GPIO_PORT2, ADI_GPIO_PIN_0, true))) {
+			DEBUG_MESSAGE("adi_gpio_OutputEnable failed\n");
+		}
 /*
     // LORA/SPI
     *((volatile uint32_t *)REG_GPIO0_CFG) |= SPI0_CLK_PORTP0_MUX | SPI0_MOSI_PORTP0_MUX | SPI0_MISO_PORTP0_MUX | SPI0_CS_PORT0_MUX;

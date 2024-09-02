@@ -31,13 +31,15 @@ int main(int argc, char *argv[])
 {
     init_system();
 
+
+    // Updata
     // DEBUG CODE
     while(1) {
     	// Toggle pin
-    	adi_gpio_Toggle(ADI_GPIO_PORT0, ADI_GPIO_PIN_14);
+    	adi_gpio_Toggle(ADI_GPIO_PORT2, ADI_GPIO_PIN_0);
 
     	// Send UART data
-    	uart_write(message, length);
+    	//uart_write(message, length);
 
     	uint32_t clockFreq;
     	adi_pwr_GetClockFrequency(ADI_CLOCK_HCLK, &clockFreq);
