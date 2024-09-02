@@ -19,8 +19,8 @@
 volatile uint32_t iHibernateExitFlag = 0;
 volatile uint8_t print_flag = 0;
 
-const char* message = "test";
-uint16_t length = 4;
+const char message[] = "DEBUG";
+uint16_t length = 5;
 
 /*
  * The system performs measurements every SLEEP_TIME (rtc.h) seconds and prints the measurement via UART - this is used to work with the external logging solution,
@@ -31,16 +31,17 @@ int main(int argc, char *argv[])
 {
     init_system();
 
-
-    // Updata
     // DEBUG CODE
     while(1) {
     	// Toggle pin
-    	adi_gpio_Toggle(ADI_GPIO_PORT2, ADI_GPIO_PIN_0);
+    	adi_gpio_Toggle(ADI_GPIO_PORT0, ADI_GPIO_PIN_14);
 
     	// Send UART data
-    	//uart_write(message, length);
+    	uart_init();
+    	uart_write(message, length);
+    	uart_deinit();
 
+    	// Create Delay
     	uint32_t clockFreq;
     	adi_pwr_GetClockFrequency(ADI_CLOCK_HCLK, &clockFreq);
     	uint32_t delay_val = clockFreq / 15000;
