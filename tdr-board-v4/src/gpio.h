@@ -19,14 +19,14 @@
 #define INTEGRATOR12_PORT       			ADI_GPIO_PORT2
 #define INTEGRATOR12_PIN        		 	ADI_GPIO_PIN_5
 
-//#define MICRO_IMP_S2_PORT       		 	ADI_GPIO_PORT2
-//#define MICRO_IMP_S2_PIN         			ADI_GPIO_PIN_8
-//
-//#define MICRO_IMP_S1_PORT        			ADI_GPIO_PORT2
-//#define MICRO_IMP_S1_PIN       			  	ADI_GPIO_PIN_9
-//
-//#define MICRO_IMP_S0_PORT       		 	ADI_GPIO_PORT2
-//#define MICRO_IMP_S0_PIN    		     	ADI_GPIO_PIN_10
+#define MICRO_IMP_S2_PORT       		 	ADI_GPIO_PORT2
+#define MICRO_IMP_S2_PIN         			ADI_GPIO_PIN_8
+
+#define MICRO_IMP_S1_PORT        			ADI_GPIO_PORT2
+#define MICRO_IMP_S1_PIN       			  	ADI_GPIO_PIN_9
+
+#define MICRO_IMP_S0_PORT       		 	ADI_GPIO_PORT2
+#define MICRO_IMP_S0_PIN    		     	ADI_GPIO_PIN_10
 
 #define MICRO_SENSOR_EN_PORT				ADI_GPIO_PORT1
 #define MICRO_SENSOR_EN_PIN					ADI_GPIO_PIN_6
@@ -64,11 +64,20 @@
 #define UART_WAKEUP_PORT					ADI_GPIO_PORT0
 #define UART_WAKEUP_PIN						ADI_GPIO_PIN_13
 
-#define LORA_RST_PORT						ADI_GPIO_PORT2
-#define LORA_RST_PIN						ADI_GPIO_PIN_1
+//#define LORA_RST_PORT						ADI_GPIO_PORT2
+//#define LORA_RST_PIN						ADI_GPIO_PIN_1
+//
+//#define LORA_DIO0_PORT						ADI_GPIO_PORT1
+//#define LORA_DIO0_PIN						ADI_GPIO_PIN_5
+
+#define LORA_RST_PORT						ADI_GPIO_PORT1
+#define LORA_RST_PIN						ADI_GPIO_PIN_6
 
 #define LORA_DIO0_PORT						ADI_GPIO_PORT1
-#define LORA_DIO0_PIN						ADI_GPIO_PIN_5
+#define LORA_DIO0_PIN						ADI_GPIO_PIN_7
+
+#define LORA_PWR_PORT						ADI_GPIO_PORT1
+#define LORA_PWR_PIN						ADI_GPIO_PIN_0
 
 void analog_pin_init();
 void digital_pin_init();

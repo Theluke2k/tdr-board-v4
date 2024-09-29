@@ -82,13 +82,13 @@ void init_system()
 
     uart_init();
 
-    xint_init();
+    //xint_init();
 
 	gpio_init();
 
-	adc_init(false); // TODO: calibration stuck. Check later.
+	//adc_init(false); // TODO: calibration stuck. Check later.
 
-    i2c_init();
+    //i2c_init();
 
     rtc_Init();
 
@@ -343,10 +343,13 @@ void run_and_store_measurements(struct tdr_data* tdr_data, uint16_t* index)
 }
 
 void delay(uint32_t time) {
-    uint32_t clockFreq = getClkFreq(ADI_CLOCK_HCLK);
-    uint32_t delay_val = clockFreq / 10000;
-    delay_val *= time;
-    while(--delay_val) {}
+//    uint32_t clockFreq = getClkFreq(ADI_CLOCK_HCLK);
+//    uint32_t delay_val = clockFreq / 10000;
+//    delay_val *= time;
+//    while(--delay_val) {}
+	 uint32_t delay_val = 20000000 / 10000;
+	 delay_val *= time;
+	 while(--delay_val) {}
 }
 
 uint32_t getClkFreq(const ADI_CLOCK_ID eClockId) {

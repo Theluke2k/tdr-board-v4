@@ -65,7 +65,7 @@ void analog_pin_init()
 void digital_pin_init()
 {
 	ADI_GPIO_RESULT error_status = ADI_GPIO_SUCCESS;
-
+/*
 	if(ADI_GPIO_SUCCESS != (error_status = adi_gpio_OutputEnable(MICRO_TH_EN_PORT, MICRO_TH_EN_PIN, true)))
 	{
 		DEBUG_MESSAGE("adi_gpio_OutputEnable failed\n");
@@ -124,22 +124,11 @@ void digital_pin_init()
 	// UART1
     //*((volatile uint32_t *)REG_GPIO1_CFG) |= UART1_TX_PORTP2_MUX;
     //*((volatile uint32_t *)REG_GPIO2_CFG) |= UART1_RX_PORTP3_MUX;
-
-	// DEBUG START
-	if (ADI_GPIO_SUCCESS
-			!= (error_status = adi_gpio_OutputEnable(ADI_GPIO_PORT2,
-					ADI_GPIO_PIN_0, true))) {
-		DEBUG_MESSAGE("adi_gpio_OutputEnable failed\n");
-	}
-	if (ADI_GPIO_SUCCESS
-			!= (error_status = adi_gpio_OutputEnable(ADI_GPIO_PORT1,
-					ADI_GPIO_PIN_15, true))) {
-		DEBUG_MESSAGE("adi_gpio_OutputEnable failed\n");
-	}
-	// DEBUG END
+*/
 
     // LORA/SPI
     *((volatile uint32_t *)REG_GPIO0_CFG) |= SPI0_CLK_PORTP0_MUX | SPI0_MOSI_PORTP0_MUX | SPI0_MISO_PORTP0_MUX | SPI0_CS_PORT0_MUX;
+
 	if(ADI_GPIO_SUCCESS != (error_status = adi_gpio_OutputEnable(LORA_RST_PORT, LORA_RST_PIN, true)))
 	{
 		DEBUG_MESSAGE("adi_gpio_OutputEnable failed\n");
@@ -149,22 +138,40 @@ void digital_pin_init()
 		DEBUG_MESSAGE("adi_gpio_InputEnable failed\n");
 	}
 
+	// LoRa PWR pin (low=power, high=no power)
+	if(ADI_GPIO_SUCCESS != (error_status = adi_gpio_InputEnable(LORA_PWR_PORT, LORA_PWR_PIN, true)))
+	{
+		DEBUG_MESSAGE("adi_gpio_InputEnable failed\n");
+	}
+
+	// Debug pin
+	if(ADI_GPIO_SUCCESS != (error_status = adi_gpio_InputEnable(ADI_GPIO_PORT0, ADI_GPIO_PIN_14, true)))
+	{
+		DEBUG_MESSAGE("adi_gpio_InputEnable failed\n");
+	}
+
 	//Initial states
-	adi_gpio_SetLow(MICRO_APWR_EN_PORT, MICRO_APWR_EN_PIN);
+//	adi_gpio_SetLow(MICRO_APWR_EN_PORT, MICRO_APWR_EN_PIN);
+//
+//	adi_gpio_SetHigh(MICRO_TH_EN_PORT, MICRO_TH_EN_PIN);
+//	adi_gpio_SetLow(MICRO_TH_S0_PORT, MICRO_TH_S0_PIN);
+//	adi_gpio_SetLow(MICRO_TH_S1_PORT, MICRO_TH_S1_PIN);
+//	adi_gpio_SetLow(MICRO_SENSOR_EN_PORT, MICRO_SENSOR_EN_PIN);
+//	adi_gpio_SetLow(MICRO_RST_INT_PORT, MICRO_RST_INT_PIN);
+//	adi_gpio_SetLow(MICRO_COMP_ON_PORT, MICRO_COMP_ON_PIN);
+//	adi_gpio_SetLow(MICRO_STM_START_PORT, MICRO_STM_START_PIN);
+//	adi_gpio_SetLow(MICRO_REF_S1_PORT, MICRO_REF_S1_PIN);
+//	adi_gpio_SetLow(MICRO_REF_S0_PORT, MICRO_REF_S0_PORT);
+//	adi_gpio_SetLow(MICRO_INTEGRATOR_TEST_PORT, MICRO_INTEGRATOR_TEST_PIN);
 
-	adi_gpio_SetHigh(MICRO_TH_EN_PORT, MICRO_TH_EN_PIN);
-	adi_gpio_SetLow(MICRO_TH_S0_PORT, MICRO_TH_S0_PIN);
-	adi_gpio_SetLow(MICRO_TH_S1_PORT, MICRO_TH_S1_PIN);
-	adi_gpio_SetLow(MICRO_SENSOR_EN_PORT, MICRO_SENSOR_EN_PIN);
-	adi_gpio_SetLow(MICRO_RST_INT_PORT, MICRO_RST_INT_PIN);
-	adi_gpio_SetLow(MICRO_COMP_ON_PORT, MICRO_COMP_ON_PIN);
-	adi_gpio_SetLow(MICRO_STM_START_PORT, MICRO_STM_START_PIN);
-	adi_gpio_SetLow(MICRO_REF_S1_PORT, MICRO_REF_S1_PIN);
-	adi_gpio_SetLow(MICRO_REF_S0_PORT, MICRO_REF_S0_PORT);
-	adi_gpio_SetLow(MICRO_INTEGRATOR_TEST_PORT, MICRO_INTEGRATOR_TEST_PIN);
+	// Allow power to LoRa module
+	adi_gpio_SetLow(LORA_PWR_PORT, LORA_PWR_PIN);
 
-
+	// Hold reset signal high. (reset=low)
 	adi_gpio_SetHigh(LORA_RST_PORT, LORA_RST_PIN);
+
+	adi_gpio_SetHigh(ADI_GPIO_PORT0, ADI_GPIO_PIN_14);
+
 
 }
 
@@ -190,6 +197,6 @@ void gpio_init()
 	gpioStatus = adi_gpio_Init(gpioMemory, ADI_GPIO_MEMORY_SIZE);
 	DEBUG_RESULT("GPIO init failed", gpioStatus, ADI_GPIO_SUCCESS);
     digital_pin_init();
-    analog_pin_init();
-    i2c_pin_init();
+    //analog_pin_init();
+    //i2c_pin_init();
 }

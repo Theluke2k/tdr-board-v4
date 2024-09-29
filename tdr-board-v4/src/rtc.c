@@ -136,9 +136,9 @@ ADI_RTC_RESULT rtc_Init (void) {
         DEBUG_RESULT("Failed to set the trim value",eResult,ADI_RTC_SUCCESS);
 
     /* force a reset to the latest build timestamp */
-        DEBUG_MESSAGE("Resetting clock");
+        //DEBUG_MESSAGE("Resetting clock");
         eResult = adi_rtc_SetCount(hDevice1, buildTime);
-        DEBUG_RESULT("Failed to set count",eResult,ADI_RTC_SUCCESS);
+        //DEBUG_RESULT("Failed to set count",eResult,ADI_RTC_SUCCESS);
 
 //        DEBUG_MESSAGE("New time is:");
 //        rtc_ReportTime();

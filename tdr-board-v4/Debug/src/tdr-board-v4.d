@@ -21,8 +21,8 @@ src/tdr-board-v4.o: ../src/tdr-board-v4.c ../src/tdr-board-v4_config.h \
  C:/Analog\ Devices/CrossCore\ Embedded\ Studio\ 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/system_ADuCM4050.h \
  ../src/rtc.h \
  C:/Analog\ Devices/CrossCore\ Embedded\ Studio\ 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/rtc/adi_rtc.h \
- C:/Users/lselm/Downloads/PipeSense_AU_SW-main/PipeSense_AU_SW-main/tdr-board-v4_1/RTE/Device/ADuCM4050/adi_rtc_config.h \
- C:/Users/lselm/Downloads/PipeSense_AU_SW-main/PipeSense_AU_SW-main/tdr-board-v4_1/RTE/Device/ADuCM4050/adi_global_config.h \
+ C:/Users/lselm/git/tdr-board-v4/tdr-board-v4/RTE/Device/ADuCM4050/adi_rtc_config.h \
+ C:/Users/lselm/git/tdr-board-v4/tdr-board-v4/RTE/Device/ADuCM4050/adi_global_config.h \
  ../src/uart.h ../src/shared.h ../src/xint.h \
  C:/Analog\ Devices/CrossCore\ Embedded\ Studio\ 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/gpio/adi_gpio.h
 
@@ -74,9 +74,9 @@ C:/Analog\ Devices/CrossCore\ Embedded\ Studio\ 2.10.1/ARM/packs/AnalogDevices/A
 
 C:/Analog\ Devices/CrossCore\ Embedded\ Studio\ 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/rtc/adi_rtc.h:
 
-C:/Users/lselm/Downloads/PipeSense_AU_SW-main/PipeSense_AU_SW-main/tdr-board-v4_1/RTE/Device/ADuCM4050/adi_rtc_config.h:
+C:/Users/lselm/git/tdr-board-v4/tdr-board-v4/RTE/Device/ADuCM4050/adi_rtc_config.h:
 
-C:/Users/lselm/Downloads/PipeSense_AU_SW-main/PipeSense_AU_SW-main/tdr-board-v4_1/RTE/Device/ADuCM4050/adi_global_config.h:
+C:/Users/lselm/git/tdr-board-v4/tdr-board-v4/RTE/Device/ADuCM4050/adi_global_config.h:
 
 ../src/uart.h:
 

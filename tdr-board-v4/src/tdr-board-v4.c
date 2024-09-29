@@ -31,23 +31,12 @@ int main(int argc, char *argv[])
 	uint16_t index = 0;
 	uint16_t package_counter = 5;
 
-
-
-	// DEBUG START
-	adi_gpio_SetHigh(ADI_GPIO_PORT2, ADI_GPIO_PIN_0); // DEBUG orange
-
-	uint32_t delay_vale = 1600*50*2; // 20ms
-	while(--delay_vale){};
-
-	adi_gpio_SetLow(ADI_GPIO_PORT2, ADI_GPIO_PIN_0); // DEBUG orange
-	// DEBUG END
-
-
-
 	packageNumber = 0;
 
 	while(1)
 	{
+		adi_gpio_Toggle(ADI_GPIO_PORT0, ADI_GPIO_PIN_14);
+		print_flag = 0; // DEBUG to never enter this if
  		if(print_flag)
 		{
  			xint_uart_disable();
@@ -65,19 +54,19 @@ int main(int argc, char *argv[])
 		}
 		else
 		{
- 			xint_uart_disable();
-			init_store();
-			run_and_store_measurements(tdr_data, &index);
-			uart_init();
-		    uint32_t delay_val = 1600; // 20ms
-		    while(--delay_val){};
-			print_tdr_data_to_uart(tdr_data);
-			uart_deinit();
+ 			//xint_uart_disable();
+			//init_store();
+			//run_and_store_measurements(tdr_data, &index);
+			//uart_init();
+		    //uint32_t delay_val = 1600; // 20ms
+		    //while(--delay_val){};
+			//print_tdr_data_to_uart(tdr_data);
+			//uart_deinit();
 			send_data_package(tdr_data, package_counter);
 			packageNumber++;
 			iHibernateExitFlag = 0;
 			rtc_UpdateAlarm();
-			xint_uart_enable();
+			//xint_uart_enable();
 			enter_hibernation();
 		}
 	}
