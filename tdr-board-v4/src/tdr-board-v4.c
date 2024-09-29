@@ -21,7 +21,8 @@ volatile uint8_t print_flag = 0;
 
 const char message[] = "DEBUG";
 uint16_t length = 5;
-
+uint32_t clockFreq;
+uint32_t delay_val = 20000000 / 10000;
 /*
  * The system performs measurements every SLEEP_TIME (rtc.h) seconds and prints the measurement via UART - this is used to work with the external logging solution,
  * for the reasons stated by me during the technical meeting. Basically, anything with uart and an SD card will do just fine, or something on computer (terminal or something\
@@ -30,23 +31,50 @@ uint16_t length = 5;
 int main(int argc, char *argv[])
 {
     init_system();
+	for (int i = 0; i < 4; i++) {
+		adi_gpio_SetHigh(ADI_GPIO_PORT0, ADI_GPIO_PIN_14);
+		// Create 1s Delay
+		delay_val = 20000000 / 10000;
+		delay_val *= 100;
+		while (--delay_val) {
+		}
+		adi_gpio_SetLow(ADI_GPIO_PORT0, ADI_GPIO_PIN_14);
+		// Create 1s Delay
+		delay_val = 20000000 / 10000;
+		delay_val *= 100;
+		while (--delay_val) {
+		}
+	}
 
+
+    /*
+	// Create 1ms Delay
+	adi_pwr_GetClockFrequency(ADI_CLOCK_HCLK, &clockFreq);
+	uint32_t delay_val = clockFreq / 15000;
+	delay_val *= 1000;
+	while (--delay_val) {
+	}
+    uart_init();
+    */
     // DEBUG CODE
+
     while(1) {
     	// Toggle pin
     	adi_gpio_Toggle(ADI_GPIO_PORT0, ADI_GPIO_PIN_14);
 
     	// Send UART data
-    	uart_init();
-    	uart_write(message, length);
-    	uart_deinit();
+    	//uart_init();
+    	//uart_write(message, length);
+    	//uart_deinit();
 
     	// Create 1ms Delay
-    	uint32_t clockFreq;
-    	adi_pwr_GetClockFrequency(ADI_CLOCK_HCLK, &clockFreq);
-    	uint32_t delay_val = clockFreq / 15000;
+    	delay_val = 20000000 / 10000;
     	delay_val *= 1;
     	while(--delay_val) {}
+
+    	iHibernateExitFlag = 0;
+    	rtc_UpdateAlarm();
+    	enter_hibernation();
     }
 
 

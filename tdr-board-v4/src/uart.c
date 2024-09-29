@@ -22,7 +22,9 @@ void uart_init()
 {
 	adi_uart_Open(0u, ADI_UART_DIR_BIDIRECTION, UartDeviceMem, ADI_UART_BIDIR_MEMORY_SIZE, &hUart);
 	adi_uart_SetConfiguration(hUart, ADI_UART_NO_PARITY, ADI_UART_ONE_STOPBIT, ADI_UART_WORDLEN_8BITS);
-	adi_uart_ConfigBaudRate(hUart, 2, 2, 348, 3); // ~115200
+	//adi_uart_ConfigBaudRate(hUart, 2, 2, 348, 3); // ~115200 for PCLK=16MHz
+	adi_uart_ConfigBaudRate(hUart, 2, 2, 1460, 3); // ~115200 for PCLK=20MHz
+	//adi_uart_ConfigBaudRate(hUart, 3, 2, 719, 3);// ~115200 for PCLK=26MHz
 //	adi_uart_RegisterCallback(hUart,UARTCallback,NULL);
 }
 

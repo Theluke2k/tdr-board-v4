@@ -90,7 +90,7 @@ void init_system()
 
     //i2c_init();
 
-    //rtc_Init();
+    rtc_Init();
 
     //spi_init();
 	//lora_initialize();
