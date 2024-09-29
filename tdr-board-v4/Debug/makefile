@@ -26,9 +26,6 @@ endif
 -include ../makefile.defs
 
 # Add inputs and outputs from these tool invocations to the build variables 
-EXECUTABLES += \
-tdr-board-v4 \
-
 OBJS := $(SRC_OBJS)
 # Quote makefile variable : OBJS 
 OBJS := $(subst \ ,@, $(OBJS))
@@ -38,37 +35,26 @@ C_DEPS := $(subst \ ,@, $(C_DEPS))
 C_DEPS := $(foreach var, $(C_DEPS), "$(subst @, ,$(var))")
 
 # All Target
-all: tdr-board-v4.hex
+all: tdr-board-v4
 
 # Tool invocations
-tdr-board-v4.hex: $(EXECUTABLES) $(SRC_OBJS)
-	@echo 'Building target: $@'
-	@echo 'Invoking: CrossCore GCC ARM Embedded Object Copier'
-	arm-none-eabi-objcopy -O ihex $(EXECUTABLES) "tdr-board-v4.hex"
-	@echo 'Finished building target: $@'
-	@echo ' '
-	$(MAKE)  --no-print-directory post-build
-
 
 PREPROC:
 	@echo 'Preprocessing LD script: tdr-board-v4.ld'
 	arm-none-eabi-cpp -E -P -DCORE0 -DDEBUG -D_RTE_ -D__ADUCM4050__ -D__SILICON_REVISION__=0x1 -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/ARM/CMSIS/5.0.1/CMSIS/Include" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/adc" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/beep" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/crc" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/dma" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/flash" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/gpio" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/i2c" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/pwr" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/rtc" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/spi" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/uart" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/wdt" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/xint" -I"C:\Users\lselm\git\tdr-board-v4\tdr-board-v4/RTE" -I"C:\Users\lselm\git\tdr-board-v4\tdr-board-v4/RTE/Device/ADuCM4050" -o  "tdr-board-v4.ld" "C:\Users\lselm\git\tdr-board-v4\tdr-board-v4/RTE/Device/ADuCM4050/ADuCM4050.ld"
 
 tdr-board-v4: $(USER_OBJS) $(SRC_OBJS) PREPROC
+	@echo 'Building target: $@'
 	@echo 'Invoking: CrossCore GCC ARM Embedded C Linker'
 	arm-none-eabi-gcc -Ttdr-board-v4.ld -DCORE0 -DDEBUG -D_RTE_ -D__ADUCM4050__ -D__SILICON_REVISION__=0x1 -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/ARM/CMSIS/5.0.1/CMSIS/Include" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/adc" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/beep" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/crc" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/dma" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/flash" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/gpio" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/i2c" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/pwr" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/rtc" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/spi" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/uart" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/wdt" -I"C:/Analog Devices/CrossCore Embedded Studio 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/xint" -I"C:\Users\lselm\git\tdr-board-v4\tdr-board-v4/RTE" -I"C:\Users\lselm\git\tdr-board-v4\tdr-board-v4/RTE/Device/ADuCM4050" -Wl,--gc-sections -mcpu=cortex-m4 -mthumb -specs=nosys.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -o  "tdr-board-v4" @input-file.txt
-	@echo 'Finished building: $@'
+	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(INTEL_HEX_FILE_OUTPUTS)$(EXECUTABLES)$(OBJS)$(C_DEPS) tdr-board-v4.hex
+	-$(RM) $(EXECUTABLES)$(OBJS)$(C_DEPS) tdr-board-v4
 	-@echo ' '
 
-post-build:
-	-arm-none-eabi-objcopy -O ihex tdr-board-v4 tdr-board-v4.hex
-	-@echo ' '
-
-.PHONY: all clean dependents post-build
+.PHONY: all clean dependents
 
 -include ../makefile.targets
