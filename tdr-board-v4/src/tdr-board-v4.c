@@ -27,6 +27,28 @@ volatile uint8_t print_flag = 0;
 int main(int argc, char *argv[])
 {
     init_system();
+
+	// DEBUG START
+	volatile uint32_t *reg = (uint32_t *) 0x4004C040;
+	uint32_t reg_value = *reg;
+
+	if (reg_value & (1 << 29)) {
+		adi_gpio_SetHigh(ADI_GPIO_PORT0, ADI_GPIO_PIN_14); // DEBUG blue
+	} else {
+		adi_gpio_SetLow(ADI_GPIO_PORT0, ADI_GPIO_PIN_14); // DEBUG blue
+	}
+	if (reg_value & (1 << 30)) {
+		adi_gpio_SetHigh(ADI_GPIO_PORT2, ADI_GPIO_PIN_0); // DEBUG orange
+	} else {
+		adi_gpio_SetLow(ADI_GPIO_PORT2, ADI_GPIO_PIN_0); // DEBUG orange
+	}
+	// DEBUG END
+	DelayMsMcu(5000);
+
+	adi_gpio_OutputEnable(ADI_GPIO_PORT1, ADI_GPIO_PIN_0, true);
+	adi_gpio_SetHigh(ADI_GPIO_PORT1, ADI_GPIO_PIN_0);
+
+
 	struct tdr_data tdr_data[TDR_MEMORY_SIZE];
 	uint16_t index = 0;
 	uint16_t package_counter = 5;
@@ -35,7 +57,6 @@ int main(int argc, char *argv[])
 
 	while(1)
 	{
-		adi_gpio_Toggle(ADI_GPIO_PORT0, ADI_GPIO_PIN_14);
 		print_flag = 0; // DEBUG to never enter this if
  		if(print_flag)
 		{
