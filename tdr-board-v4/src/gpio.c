@@ -167,12 +167,29 @@ void digital_pin_init()
 		DEBUG_MESSAGE("adi_gpio_InputEnable failed\n");
 	}
 
-/*
-	if(ADI_GPIO_SUCCESS != (error_status = adi_gpio_InputEnable(LORA_DIO0_PORT, LORA_DIO0_PIN, true)))
+	if(ADI_GPIO_SUCCESS != (error_status = adi_gpio_OutputEnable(ADI_GPIO_PORT1, ADI_GPIO_PIN_15, true)))
 	{
 		DEBUG_MESSAGE("adi_gpio_InputEnable failed\n");
 	}
 
+	adi_gpio_OutputEnable(ADI_GPIO_PORT0, ADI_GPIO_PIN_3, true);
+	adi_gpio_SetHigh(ADI_GPIO_PORT0, ADI_GPIO_PIN_3);
+
+	adi_gpio_OutputEnable(ADI_GPIO_PORT1, ADI_GPIO_PIN_10, true);
+	adi_gpio_SetHigh(ADI_GPIO_PORT1, ADI_GPIO_PIN_10);
+
+	adi_gpio_OutputEnable(ADI_GPIO_PORT1, ADI_GPIO_PIN_6, true);
+	adi_gpio_SetHigh(ADI_GPIO_PORT1, ADI_GPIO_PIN_6);
+
+	adi_gpio_OutputEnable(ADI_GPIO_PORT1, ADI_GPIO_PIN_0, true);
+	adi_gpio_SetHigh(ADI_GPIO_PORT1, ADI_GPIO_PIN_0);
+
+
+	if(ADI_GPIO_SUCCESS != (error_status = adi_gpio_InputEnable(LORA_DIO0_PORT, LORA_DIO0_PIN, true)))
+	{
+		DEBUG_MESSAGE("adi_gpio_InputEnable failed\n");
+	}
+/*
 	if(ADI_GPIO_SUCCESS != (error_status = adi_gpio_OutputEnable(LORA_RST_PORT, LORA_RST_PIN, true)))
 	{
 		DEBUG_MESSAGE("adi_gpio_OutputEnable failed\n");

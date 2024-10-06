@@ -15,7 +15,7 @@
 // LED current = 0.1755mA + 0.3424mA = 0.5179mA
 // BOARD sleep = 0.72mA
 
-
+uint32_t delay_val = 0;
 volatile uint32_t iHibernateExitFlag = 0;
 volatile uint8_t print_flag = 0;
 
@@ -32,21 +32,27 @@ int main(int argc, char *argv[])
 	volatile uint32_t *reg = (uint32_t *) 0x4004C040;
 	uint32_t reg_value = *reg;
 
-	if (reg_value & (1 << 29)) {
+	if (reg_value & (1 << 4)) {
 		adi_gpio_SetHigh(ADI_GPIO_PORT0, ADI_GPIO_PIN_14); // DEBUG blue
 	} else {
 		adi_gpio_SetLow(ADI_GPIO_PORT0, ADI_GPIO_PIN_14); // DEBUG blue
 	}
-	if (reg_value & (1 << 30)) {
-		adi_gpio_SetHigh(ADI_GPIO_PORT2, ADI_GPIO_PIN_0); // DEBUG orange
+	if (reg_value & (1 << 5)) {
+		adi_gpio_SetHigh(ADI_GPIO_PORT1, ADI_GPIO_PIN_15); // DEBUG orange
 	} else {
-		adi_gpio_SetLow(ADI_GPIO_PORT2, ADI_GPIO_PIN_0); // DEBUG orange
+		adi_gpio_SetLow(ADI_GPIO_PORT1, ADI_GPIO_PIN_15); // DEBUG orange
 	}
 	// DEBUG END
-	DelayMsMcu(5000);
+	delay_val = 20000000 / 10000;
+	delay_val *= 2000;
+	while(--delay_val) {}
+	adi_gpio_SetLow(ADI_GPIO_PORT0, ADI_GPIO_PIN_14);
+	adi_gpio_SetLow(ADI_GPIO_PORT1, ADI_GPIO_PIN_15);
+	delay_val = 20000000 / 10000;
+	delay_val *= 2000;
+	while(--delay_val) {}
 
-	adi_gpio_OutputEnable(ADI_GPIO_PORT1, ADI_GPIO_PIN_0, true);
-	adi_gpio_SetHigh(ADI_GPIO_PORT1, ADI_GPIO_PIN_0);
+
 
 
 	struct tdr_data tdr_data[TDR_MEMORY_SIZE];
