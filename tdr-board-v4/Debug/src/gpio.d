@@ -19,6 +19,7 @@ src/gpio.o: ../src/gpio.c ../src/gpio.h \
  C:/Analog\ Devices/CrossCore\ Embedded\ Studio\ 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/system_ADuCM4050.h \
  C:/Analog\ Devices/CrossCore\ Embedded\ Studio\ 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/adi_callback.h \
  ../src/uart.h \
+ C:/Analog\ Devices/CrossCore\ Embedded\ Studio\ 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/xint/adi_xint.h \
  C:/Analog\ Devices/CrossCore\ Embedded\ Studio\ 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/sys/platform.h
 
 ../src/gpio.h:
@@ -62,5 +63,7 @@ C:/Analog\ Devices/CrossCore\ Embedded\ Studio\ 2.10.1/ARM/packs/AnalogDevices/A
 C:/Analog\ Devices/CrossCore\ Embedded\ Studio\ 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/adi_callback.h:
 
 ../src/uart.h:
+
+C:/Analog\ Devices/CrossCore\ Embedded\ Studio\ 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/drivers/xint/adi_xint.h:
 
 C:/Analog\ Devices/CrossCore\ Embedded\ Studio\ 2.10.1/ARM/packs/AnalogDevices/ADuCM4x50_DFP/4.0.0/Include/sys/platform.h:
