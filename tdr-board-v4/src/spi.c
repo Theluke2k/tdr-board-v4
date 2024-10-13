@@ -72,6 +72,7 @@ ADI_SPI_RESULT spi_init()
 
 	eResult = adi_spi_SetContinuousMode(spiDevice, true);
 
+
 	return ADI_SPI_SUCCESS;
 }
 
