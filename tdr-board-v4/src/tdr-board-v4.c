@@ -53,8 +53,6 @@ int main(int argc, char *argv[])
 	while(--delay_val) {}
 
 
-
-
 	struct tdr_data tdr_data[TDR_MEMORY_SIZE];
 	uint16_t index = 0;
 	uint16_t package_counter = 5;
