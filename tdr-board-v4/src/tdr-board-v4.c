@@ -31,19 +31,6 @@ int main(int argc, char *argv[])
 	uint16_t index = 0;
 	uint16_t package_counter = 5;
 
-
-
-	// DEBUG START
-	adi_gpio_SetHigh(ADI_GPIO_PORT2, ADI_GPIO_PIN_0); // DEBUG orange
-
-	uint32_t delay_vale = 1600*50*2; // 20ms
-	while(--delay_vale){};
-
-	adi_gpio_SetLow(ADI_GPIO_PORT2, ADI_GPIO_PIN_0); // DEBUG orange
-	// DEBUG END
-
-
-
 	packageNumber = 0;
 
 	while(1)
