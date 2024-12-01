@@ -41,6 +41,12 @@ uint8_t lora_initialize() {
     /* Recover the LoRa module version */
     spi_read_byte(REG_VERSION, &loRaVersion);
     if (loRaVersion != SX1276_ID)
+    	// DEBUG start
+    	adi_gpio_SetHigh(ADI_GPIO_PORT0, ADI_GPIO_PIN_14);
+    	delay(500);
+    	adi_gpio_SetLow(ADI_GPIO_PORT0, ADI_GPIO_PIN_14);
+    	delay(500);
+    	// DEBUG END
         return 1;
 
     /* Set the module in sleep mode */

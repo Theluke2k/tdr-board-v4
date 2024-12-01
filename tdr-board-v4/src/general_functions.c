@@ -200,7 +200,7 @@ uint8_t enter_hibernation()
 	ADI_PWR_RESULT eResult;
 	if((eResult = adi_pwr_EnterLowPowerMode(ADI_PWR_MODE_HIBERNATE, &iHibernateExitFlag, 0)) != ADI_PWR_SUCCESS)
 	{
-		DEBUG_RESULT("Error during entering hibernation", eResult, ADI_PWR_SUCCESS);
+		//DEBUG_RESULT("Error during entering hibernation", eResult, ADI_PWR_SUCCESS);
 		return 1;
 	}
 	return 0;
@@ -343,13 +343,13 @@ void run_and_store_measurements(struct tdr_data* tdr_data, uint16_t* index)
 }
 
 void delay(uint32_t time) {
-//    uint32_t clockFreq = getClkFreq(ADI_CLOCK_HCLK);
-//    uint32_t delay_val = clockFreq / 10000;
-//    delay_val *= time;
-//    while(--delay_val) {}
-	 uint32_t delay_val = 20000000 / 10000;
-	 delay_val *= time;
-	 while(--delay_val) {}
+    uint32_t clockFreq = getClkFreq(ADI_CLOCK_HCLK);
+    uint32_t delay_val = clockFreq / 15000;
+    delay_val *= time;
+    while(--delay_val) {}
+//	 uint32_t delay_val = 20000000 / 10000;
+//	 delay_val *= time;
+//	 while(--delay_val) {}
 }
 
 uint32_t getClkFreq(const ADI_CLOCK_ID eClockId) {

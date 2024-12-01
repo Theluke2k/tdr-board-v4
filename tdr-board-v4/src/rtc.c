@@ -243,12 +243,12 @@ ADI_RTC_RESULT rtc_UpdateAlarm (void) {
 
     if(ADI_RTC_SUCCESS != (eResult = adi_rtc_GetCount(hDevice1,&rtcCount)))
     {
-        DEBUG_RESULT("\n Failed to get RTC Count %04d",eResult,ADI_RTC_SUCCESS);
+        //DEBUG_RESULT("\n Failed to get RTC Count %04d",eResult,ADI_RTC_SUCCESS);
         return(eResult);
     }
     if(ADI_RTC_SUCCESS != (eResult = adi_rtc_SetAlarm(hDevice1, rtcCount + SLEEP_TIME)))
     {
-        DEBUG_RESULT("\n Failed to set RTC Alarm %04d",eResult,ADI_RTC_SUCCESS);
+        //DEBUG_RESULT("\n Failed to set RTC Alarm %04d",eResult,ADI_RTC_SUCCESS);
         return(eResult);
     }
 

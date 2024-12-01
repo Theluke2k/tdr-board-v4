@@ -11,6 +11,7 @@
 #include "shared.h"
 #include "xint.h"
 #include <adi_gpio.h> // DEBUG
+#include "gpio.h"
 
 // LED current = 0.1755mA + 0.3424mA = 0.5179mA
 // BOARD sleep = 0.72mA
@@ -59,11 +60,46 @@ int main(int argc, char *argv[])
 	delay_val *= 2000;
 	while(--delay_val) {}
 	*/
+
+    // Sleep
+    rtc_UpdateAlarm();
+    enter_hibernation();
+
+    adi_gpio_SetHigh(LORA_RST_PORT, LORA_RST_PIN);
+
+    // Turn on power to the radio
+    adi_gpio_SetLow(LORA_PWR_PORT, LORA_PWR_PIN);
+
+    while (1) {
+		delay(5000);
+
+		// Set reset signal low
+		adi_gpio_SetLow(LORA_RST_PORT, LORA_RST_PIN);
+
+		// Turn off power to the radio
+		adi_gpio_SetHigh(LORA_PWR_PORT, LORA_PWR_PIN);
+
+		// Sleep
+		rtc_UpdateAlarm();
+		enter_hibernation();
+
+		// Turn on power to the radio
+		adi_gpio_SetLow(LORA_PWR_PORT, LORA_PWR_PIN);
+
+		// Set reset signal high
+		adi_gpio_SetHigh(LORA_RST_PORT, LORA_RST_PIN);
+
+
+
+
+	}
 	uint32_t clockFreq;
 	adi_pwr_GetClockFrequency(ADI_CLOCK_HCLK, &clockFreq);
 	uint32_t delay_val = clockFreq / 15000;
 	delay_val *= 1000;
 	while(--delay_val) {}
+
+
 
 
 	struct tdr_data tdr_data[TDR_MEMORY_SIZE];

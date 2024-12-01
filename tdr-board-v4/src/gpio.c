@@ -150,13 +150,13 @@ void digital_pin_init()
 
 	//adi_xint_DisableIRQ(ADI_XINT_EVENT_INT1);
 
-	adi_gpio_SetHigh(ADI_GPIO_PORT1, ADI_GPIO_PIN_0);
+
 	// LoRa PWR pin (low=power, high=no power)
 	if(ADI_GPIO_SUCCESS != (error_status = adi_gpio_OutputEnable(ADI_GPIO_PORT1, ADI_GPIO_PIN_0, true)))
 	{
 		//DEBUG_MESSAGE("adi_gpio_InputEnable failed\n");
 	}
-
+	adi_gpio_SetHigh(ADI_GPIO_PORT1, ADI_GPIO_PIN_0);
 
 	// LORA/SPI
 	*((volatile uint32_t *)REG_GPIO0_CFG) |= SPI0_CLK_PORTP0_MUX | SPI0_MOSI_PORTP0_MUX | SPI0_MISO_PORTP0_MUX | SPI0_CS0_PORT0_MUX;
@@ -201,7 +201,7 @@ void digital_pin_init()
 	{
 		DEBUG_MESSAGE("adi_gpio_OutputEnable failed\n");
 	}
-	adi_gpio_SetHigh(LORA_RST_PORT, LORA_RST_PIN);
+	//adi_gpio_SetHigh(LORA_RST_PORT, LORA_RST_PIN);
 
 
 
